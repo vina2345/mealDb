@@ -1,25 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "../styles/global.css";
-export const Areas = () => {
-  const [aras, setareas] = useState({});
+export const Areas = ({ area }) => {
+  const [areas, setAreas] = useState([]);
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/list.php?a=list")
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
       .then((res) => res.json())
-      .then((data) => setareas(data));
-  }, []);
+      .then((data) => setAreas(data.meals || []));
+  }, [area]);
+
   return(
     <div>
+      <h1>Areas</h1>
       <div className="areasList">
-        {aras?.meals &&
-          aras.meals.map((area) => (
-            <div key={area.idArea}>
-              <h3>{area.strArea}</h3>
-            </div>
-          ))}
-         </div>
+        {areas?.map((area) => (
+          <div key={area.idMeal} className="areaItem">  
+            <h3>{area.strMeal}</h3>
+            <img
+              src={area.strMealThumb}
+              alt={area.strMeal}
+              style={{ width: "100px", height: "100px", objectFit: "cover" }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+}           
 
-
-  
+    

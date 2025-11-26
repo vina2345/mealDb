@@ -64,7 +64,7 @@ const Recipes = () => {
   }
   const onMealsButtonClick = () => {
     setType("meals");
-    
+
   }
   return (
     <div>
@@ -93,8 +93,8 @@ const Recipes = () => {
 
       <div>{type === "meals" && <Meals />}</div>
       <div>{type === "ingredients" && <Ingredients ingredient={selectedIngredient} />}</div>
-      <div>{type === "catogeries" && <Catogeries />}</div>
-      <div>{type === "areas" && <Areas />}</div>
+      <div>{type === "areas" && <Areas area={selectedArea} />}</div>
+      <div>{type === "catogeries" && <Catogeries categories={selectedCategory} />}</div>
     </div>
   );
 };
