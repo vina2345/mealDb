@@ -1,0 +1,15 @@
+.buttonsSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons {
+    padding: 4px 8px;
+}
+
+.ingredientItem {
+    border: 1px solid #ccc;
+
+}
